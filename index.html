@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PixelDar TN | Gaming shop in Tunisia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="rgb-bg" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="navbar">
+    <a href="#home" class="logo">Pixel<b>Dar</b> TN</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#products">Games & gear</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="themes" role="group" aria-label="RGB theme">
+      <button class="theme" data-t="neon" aria-label="Neon theme"></button>
+      <button class="theme" data-t="cyber" aria-label="Cyber theme"></button>
+      <button class="theme" data-t="toxic" aria-label="Toxic theme"></button>
+    </div>
+    <button class="cart-btn" id="cartBtn" aria-label="Open cart">🛒 Cart <span id="cartCount">0</span></button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <h1 class="rgb-text">Level up your setup.</h1>
+        <p>Controllers, headsets, keyboards and game cards. Delivery to all 24 governorates, pay when you receive.</p>
+        <div class="hero-actions">
+          <a href="#products" class="btn">Shop now</a>
+          <a href="#contact" class="btn ghost">Ask us a question</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="keyboard">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="pad">🎮</div>
+      </div>
+    </section>
+
+    <ul class="trust">
+      <li><b>Cash on delivery</b>Pay when you receive</li>
+      <li><b>All 24 governorates</b>Free delivery from 300 DT</li>
+      <li><b>Original products</b>Warranty on every item</li>
+      <li><b>WhatsApp orders</b>We confirm in minutes</li>
+    </ul>
+
+    <section class="section" id="products">
+      <h2>Games & gear</h2>
+      <div class="toolbar">
+        <input type="search" id="search" placeholder="Search a game, console or gear" aria-label="Search products">
+        <select id="sort" aria-label="Sort products">
+          <option value="default">Featured</option>
+          <option value="top">Top rated</option>
+          <option value="low">Price: low to high</option>
+          <option value="high">Price: high to low</option>
+        </select>
+        <span id="resultCount" class="count"></span>
+      </div>
+      <div class="filters" id="filters">
+        <button class="chip active" data-cat="all">All</button>
+        <button class="chip" data-cat="consoles">Consoles</button>
+        <button class="chip" data-cat="games">Games</button>
+        <button class="chip" data-cat="setup">Setup & decor</button>
+        <button class="chip" data-cat="controllers">Controllers</button>
+        <button class="chip" data-cat="audio">Headsets</button>
+        <button class="chip" data-cat="pc">PC gear</button>
+        <button class="chip" data-cat="cards">Game cards</button>
+        <button class="chip" data-cat="saved">♥ Saved</button>
+      </div>
+      <div class="grid" id="productGrid"></div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Talk to us</h2>
+      <form class="form" id="contactForm" novalidate>
+        <label>Name
+          <input type="text" id="name" name="name" autocomplete="name" required>
+          <small class="err" id="nameErr"></small>
+        </label>
+        <label>Phone or email
+          <input type="text" id="contactInfo" name="contact" required>
+          <small class="err" id="contactErr"></small>
+        </label>
+        <label>Message
+          <textarea id="message" name="message" rows="4" required></textarea>
+          <small class="err" id="messageErr"></small>
+        </label>
+        <button class="btn" type="submit">Send message</button>
+        <p class="ok" id="formOk" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <div class="logo">Pixel<b>Dar</b> TN</div>
+      <p>Made for Tunisian gamers. Tunis, Tunisia.</p>
+    </div>
+    <div>
+      <p>Open every day, 10:00 to 22:00</p>
+      <p>+216 00 000 000 · hello@pixeldar.tn</p>
+    </div>
+    <p class="copy">© <span id="year"></span> PixelDar TN. All prices in TND.</p>
+  </footer>
+
+  <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-head">
+      <h3>Your cart</h3>
+      <button class="close" id="closeCart" aria-label="Close cart">✕</button>
+    </div>
+    <ul id="cartItems"></ul>
+    <div class="drawer-foot">
+      <div class="ship"><span id="shipMsg"></span><div class="bar"><i id="shipBar"></i></div></div>
+      <div class="promo">
+        <input id="promoInput" placeholder="Promo code (try GAMER10)" aria-label="Promo code">
+        <button class="chip" id="promoBtn" type="button">Apply</button>
+      </div>
+      <small id="promoMsg" class="ok"></small>
+      <dl class="sums">
+        <dt>Items</dt><dd id="sumSub">0 DT</dd>
+        <dt>Promo</dt><dd id="sumDisc">—</dd>
+        <dt>Delivery</dt><dd id="sumFee">—</dd>
+        <dt class="grand">Total</dt><dd class="grand" id="cartTotal">0 DT</dd>
+      </dl>
+      <form id="orderForm" class="order" hidden novalidate>
+        <input id="oName" placeholder="Full name" autocomplete="name" aria-label="Full name">
+        <input id="oPhone" placeholder="Phone (8 digits)" inputmode="tel" autocomplete="tel" aria-label="Phone">
+        <select id="gov" aria-label="Governorate"></select>
+        <input id="oAddr" placeholder="Address" autocomplete="street-address" aria-label="Address">
+        <small class="err" id="orderErr"></small>
+        <button class="btn" type="submit">Send order on WhatsApp</button>
+      </form>
+      <button class="btn" id="checkout" type="button">Order now</button>
+      <button class="link" id="clearCart" type="button">Empty cart</button>
+    </div>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="./script.js"></script>
+  
+</body>
+</html>
